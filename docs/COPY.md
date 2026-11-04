@@ -14,7 +14,7 @@ Estudio de música y espacio creativo para artistas y productores.
 ● REC 00:00:00:00 · ( PALERMO — BUENOS AIRES ) · DESLIZÁ
 
 ## 01 Manifiesto
-UN ESTUDIO DONDE LA CALIDAD TECNICA Y LA EXPLORACION ARTISTICA CONVIVEN
+UN ESPACIO DE TRABAJO PARA ARTISTAS PRODUCTORES Y MENTES INQUIETAS (texto accesible: "Un espacio de trabajo para artistas, productores y mentes inquietas.")
 
 ## Sobre SinCalma
 No imponemos una estética ni una forma de hacer música. Cada proyecto conserva su propia esencia mientras encuentra acá un espacio para desarrollarse, experimentar y crecer.

@@ -107,9 +107,9 @@ button{font:inherit;color:inherit}
 .manifest .sticky{display:flex;flex-direction:column;justify-content:center;gap:clamp(24px,4vh,48px);padding:90px var(--pad-x) 40px}
 .rings{position:absolute;inset:0;width:100%;height:100%;opacity:.2;pointer-events:none}
 .manifest-text{position:relative;margin:0;max-width:1500px;font-family:Schramberg;font-weight:400;font-size:clamp(30px,6vw,100px);line-height:1.02;text-wrap:balance}
-.manifest-text span{opacity:.13}
+.manifest-text .mw>span{opacity:.13}
 .manifest-text .hl{color:var(--dodger)}
-.no-js .manifest-text span{opacity:1}
+.no-js .manifest-text .mw>span{opacity:1}
 
 /* ---------- Sobre ---------- */
 .about{position:relative;padding:clamp(40px,8vh,100px) var(--pad-x) var(--pad-y)}
@@ -128,6 +128,17 @@ button{font:inherit;color:inherit}
 .about-copy{flex:2 1 520px;display:flex;flex-direction:column;gap:28px;min-width:0}
 .lead{margin:0;font-size:clamp(24px,2.7vw,42px);line-height:1.18;letter-spacing:-.015em;text-wrap:pretty}
 .body{margin:0;max-width:620px;font-size:clamp(16px,1.25vw,19px);line-height:1.6;color:rgba(255,255,255,.7);text-wrap:pretty}
+
+/* "Leer más" toggle for the second Sobre paragraph: brand star (green closed, white open) + label */
+.more{appearance:none;align-self:flex-start;display:inline-flex;align-items:center;gap:14px;min-height:44px;padding:0;background:none;border:0;color:#fff;cursor:pointer;font:600 12px/1 Archivo,sans-serif;letter-spacing:.18em;text-transform:uppercase;-webkit-tap-highlight-color:transparent}
+.more-icon{flex:none;width:62px;aspect-ratio:930/297;background:url(../assets/star-green.png) center/contain no-repeat;transition:transform .35s var(--ease-ui)}
+.more[aria-expanded="true"] .more-icon{background-image:url(../assets/star-white.png)}
+.more:hover{color:var(--green)}
+.more:hover .more-icon{transform:scale(1.12)}
+.about-more{display:grid;grid-template-rows:1fr;transition:grid-template-rows .6s var(--ease-reveal),opacity .45s var(--ease-ui),margin-top .6s var(--ease-reveal)}
+.about-more>div{min-height:0;overflow:hidden}
+.js .about-more:not(.open){grid-template-rows:0fr;opacity:0;margin-top:-28px}
+@media (prefers-reduced-motion:reduce){.about-more{transition:none}}
 
 .halftone-band{position:relative;height:clamp(360px,62vw,760px);overflow:hidden;background:var(--royal)}
 .halftone-band canvas{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:pan-y}
@@ -318,5 +329,5 @@ button{font:inherit;color:inherit}
 /* ---------- Reduced motion ---------- */
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
-  .manifest-text span{opacity:1!important}
+  .manifest-text .mw>span{opacity:1!important}
 }

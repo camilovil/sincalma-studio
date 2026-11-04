@@ -107,6 +107,18 @@ $$('a[href^="#"]').forEach((a) => a.addEventListener('click', () => {
   if (t && t.hasAttribute('tabindex')) setTimeout(() => t.focus({ preventScroll: true }), 50);
 }));
 
+// "+" toggle in Sobre SinCalma
+$$('[data-more]').forEach((btn) => {
+  const panel = document.getElementById(btn.getAttribute('aria-controls')); const label = $('.more-label', btn);
+  if (panel) panel.setAttribute('aria-hidden', 'true');
+  btn.addEventListener('click', () => {
+    const open = btn.getAttribute('aria-expanded') !== 'true';
+    btn.setAttribute('aria-expanded', String(open));
+    panel?.classList.toggle('open', open); panel?.setAttribute('aria-hidden', String(!open));
+    if (label) label.textContent = open ? 'Leer menos' : 'Leer más';
+  });
+});
+
 // ───────────── Decorative DOM built in JS ─────────────
 // 3D S coin: 15 extrusion layers, brand palette only — Royal Blue body, Dodger Blue near the face
 const coinRot = $('[data-coin-rot]');
@@ -278,7 +290,7 @@ eng.onFrame((st) => {
 // Hero zoom, manifesto, gallery, Instagram tunnel, footer, floating CTA
 const hero = $('[data-hero]'), man = $('[data-manifest]');
 const heroLogo = hero && $('.hero-logo', hero);
-const words = man ? $$('.manifest-text span', man) : [];
+const words = man ? $$('.manifest-text .mw > span', man) : [];
 const hs = $('[data-hscroll]'), track = hs && $('[data-track]', hs);
 const igSec = $('[data-ig]'), igPosts = igSec ? $$('[data-ig-post]', igSec) : [];
 const res = $('#reservar'), foot = $('[data-footer]');
