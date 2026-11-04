@@ -9,8 +9,8 @@ SINCALMA STUDIO · PALERMO — BA · CARGANDO SEÑAL · 000–100
 Manifiesto · El espacio · Instagram · SONIDO ON/OFF · BUE hh:mm:ss · Reservar sesión · MENÚ / CERRAR
 
 ## Hero
-ESTUDIO DE GRABACION
-Producción y sonido profesional para artistas y productores
+SINCALMA STUDIO
+Estudio de música y espacio creativo para artistas y productores.
 ● REC 00:00:00:00 · ( PALERMO — BUENOS AIRES ) · DESLIZÁ
 
 ## 01 Manifiesto
