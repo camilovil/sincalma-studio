@@ -299,17 +299,18 @@ button{font:inherit;color:inherit}
   /* No halftone band: Sobre flows straight into Fundadora */
   .halftone-band{display:none}
   .about{padding-bottom:24px}
-  /* Personality: a short list of the 5 stations instead of the 3-screen FM dial */
-  .tuner{height:auto}
-  .tuner .sticky{position:relative;height:auto;overflow:visible;padding:var(--pad-y) var(--pad-x)}
-  .tuner .grain,.tuner .scan,.dial-wrap,.freq{display:none}
-  .tuner-top{position:static;margin-bottom:28px}
-  .stations{position:static;display:flex;flex-direction:column}
-  .station{position:static;opacity:1!important;filter:none!important;translate:none!important;visibility:visible!important;align-items:flex-start;text-align:left;gap:10px;padding:22px 0;border-top:1px solid var(--hair)}
-  .station:last-child{border-bottom:1px solid var(--hair)}
-  .station::before{content:"FM " attr(data-fm);font:600 12px/1 Archivo,sans-serif;letter-spacing:.2em;color:var(--green);font-variant-numeric:tabular-nums}
-  .station h3{font-size:clamp(30px,10vw,56px);white-space:nowrap}
-  .station p{max-width:none;font-size:16px;text-wrap:pretty}
+  /* Personality: same scroll-driven radio, as a compact pinned block (--th set from JS) */
+  .tuner{height:calc(var(--th,440px) + 150svh)}
+  .tuner .sticky{height:auto;top:calc(50svh - var(--th,440px) / 2);display:flex;flex-direction:column;gap:18px;padding:32px 0 24px}
+  .tuner-top{position:static;padding:0 var(--pad-x);align-items:center}
+  .freq span{font-size:26px}
+  .tuner-top{flex-wrap:nowrap}
+  .tuner-sub{display:none}
+  .stations{position:relative;inset:auto;height:170px}
+  .station{gap:14px}
+  .station h3{font-size:clamp(30px,10vw,56px)}
+  .station p{max-width:330px;font-size:15px;line-height:1.45}
+  .dial-wrap{position:relative;bottom:auto;height:84px}
 }
 
 /* ---------- Reduced motion ---------- */

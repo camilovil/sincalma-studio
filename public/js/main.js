@@ -230,12 +230,20 @@ if (manSticky) new ResizeObserver(() => manSticky.parentElement.style.setPropert
 const tun = $('[data-tuner]');
 const tLayers = tun ? $$('[data-station]', tun) : [];
 const tDial = tun && $('[data-dial]', tun), tFreq = tun && $('[data-freq]', tun), tStatic = tun && $('[data-static]', tun);
+const tSticky = tun && $('.sticky', tun);
+if (tSticky) new ResizeObserver(() => tun.style.setProperty('--th', tSticky.offsetHeight + 'px')).observe(tSticky);
 if (tStatic) fx.grain(tStatic, { alpha: 70, fps: 20 });
 const freqs = [88.1, 92.7, 97.3, 101.9, 106.5];
 eng.onFrame((st) => {
-  if (!tun || mobileMQ.matches || !st.visibleOf(tun)) return;
+  if (!tun || !st.visibleOf(tun)) return;
   const gap = Math.max(200, Math.min(420, st.vw * 0.3)); tun.style.setProperty('--gap', gap + 'px');
-  const p = st.progressOf(tun); const raw = fx.clamp(p * 1.15 - 0.05) * 4;
+  // Mobile pins a compact block (shorter than the screen): map progress to exactly the pinned stretch.
+  let p;
+  if (mobileMQ.matches && tSticky) {
+    const r = tun.getBoundingClientRect(), H = tSticky.offsetHeight, stick = (st.vh - H) / 2;
+    p = fx.clamp((stick - r.top) / Math.max(1, r.height - H));
+  } else p = st.progressOf(tun);
+  const raw = fx.clamp(p * 1.15 - 0.05) * 4;
   const near = Math.round(raw), off = Math.min(1, Math.abs(raw - near) * 2);
   const pc = near + (raw - near) * (0.35 + 0.65 * off);
   tDial.style.translate = (-pc * gap).toFixed(1) + 'px 0';
@@ -321,7 +329,7 @@ eng.onFrame((st) => {
     }
   }
   const mid = st.vh * 0.5;
-  const busy = [mobileMQ.matches ? null : tun, igSec, hs].some((el) => { if (!el) return false; const r = el.getBoundingClientRect(); return r.top < mid && r.bottom > mid; });
+  const busy = [tun, igSec, hs].some((el) => { if (!el) return false; const r = el.getBoundingClientRect(); return r.top < mid && r.bottom > mid; });
   const show = heroDone && !resIn && !footIn && !busy && !state.menu;
   if (show !== ctaOn && cta) {
     ctaOn = show; root.style.setProperty('--cta', show ? '1' : '0');
