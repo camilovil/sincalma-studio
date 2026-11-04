@@ -4,7 +4,7 @@ import * as fx from './fx.js';
 // ───────────── Client config (pending: real WhatsApp, Instagram and hours) ─────────────
 const CONFIG = {
   whatsapp: '5491100000000',      // placeholder — formato internacional sin "+"
-  instagram: 'sincalma.studio',   // placeholder
+  instagram: 'sincalmastudio',    // confirmado por el cliente
   openHour: 10,                   // horario de atención (hora de Buenos Aires)
   closeHour: 22,
   tz: 'America/Argentina/Buenos_Aires',

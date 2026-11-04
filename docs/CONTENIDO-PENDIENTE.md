@@ -4,7 +4,7 @@ Checklist para el cliente antes de pasar a producción.
 
 ## Datos
 - [ ] Número de WhatsApp (formato internacional, ej. 54911XXXXXXXX) — hoy: placeholder 5491100000000
-- [ ] Usuario de Instagram — hoy: placeholder @sincalma.studio
+- [x] Usuario de Instagram — @sincalmastudio
 - [ ] Horario de atención (BA) — hoy: 10 a 22 h (alimenta "ABIERTO AHORA / TE RESPONDEMOS MAÑANA")
 - [ ] Confirmar servicios del armador: Grabación · Producción · Mezcla y master · Otra consulta
 - [ ] Confirmar nombres de salas: Sala de control · Cabina de voz · Live room · Equipamiento · Lounge

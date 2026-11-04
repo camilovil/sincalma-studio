@@ -38,7 +38,7 @@ Salas: SALA DE CONTROL · CABINA DE VOZ · LIVE ROOM · EQUIPAMIENTO · LOUNGE
 ( UBICACIÓN ) Palermo, Buenos Aires. La dirección exacta se comparte al confirmar tu sesión. — Coordinar una visita
 
 ## 03 Instagram
-SEGUINOS · @sincalma.studio · PASÁ EL CURSOR PARA SOLARIZAR (mobile: LOS POSTS SE SOLARIZAN AL PASAR)
+SEGUINOS · @sincalmastudio · PASÁ EL CURSOR PARA SOLARIZAR (mobile: LOS POSTS SE SOLARIZAN AL PASAR)
 
 ## 04 Reservas
 RESERVAS — Armá tu consulta en dos pasos y la enviamos directo por WhatsApp.
@@ -53,7 +53,7 @@ Enviar por WhatsApp — Se abre WhatsApp con el mensaje listo para enviar.
 ( FIN DE LA SESIÓN ) · SINCALMA STUDIO — PALERMO
 RESERVAS: Reservar sesión · Abierto ahora / Te respondemos mañana
 NAVEGACIÓN: Manifiesto · El espacio · Instagram · Reservas
-CONTACTO: WhatsApp · @sincalma.studio · Palermo, Buenos Aires
+CONTACTO: WhatsApp · @sincalmastudio · Palermo, Buenos Aires
 ESTUDIO: Producción y sonido profesional para artistas y productores. · Volver arriba
 © 2026 SinCalma Studio. Todos los derechos reservados. · Sitio desarrollado por camilovillanueva.com
 

@@ -28,7 +28,7 @@ Al principio de `public/js/main.js`, en `CONFIG`:
 | Dato | Valor actual |
 |---|---|
 | `whatsapp` | `5491100000000` (placeholder) |
-| `instagram` | `sincalma.studio` (placeholder) |
+| `instagram` | `sincalmastudio` |
 | `openHour` / `closeHour` | 10 / 22 (hora de Buenos Aires) |
 
 Los posts del túnel de Instagram están en `IG_POSTS` (mismo archivo). Hoy son imágenes del moodboard.
