@@ -294,6 +294,24 @@ button{font:inherit;color:inherit}
 
 @media (max-width:360px){.hero-kicker{letter-spacing:.3em;padding-left:.3em}}
 
+/* ---------- Mobile only (≤767px): fewer, shorter sections ---------- */
+@media (max-width:767px){
+  /* No halftone band: Sobre flows straight into Fundadora */
+  .halftone-band{display:none}
+  .about{padding-bottom:24px}
+  /* Personality: a short list of the 5 stations instead of the 3-screen FM dial */
+  .tuner{height:auto}
+  .tuner .sticky{position:relative;height:auto;overflow:visible;padding:var(--pad-y) var(--pad-x)}
+  .tuner .grain,.tuner .scan,.dial-wrap,.freq{display:none}
+  .tuner-top{position:static;margin-bottom:28px}
+  .stations{position:static;display:flex;flex-direction:column}
+  .station{position:static;opacity:1!important;filter:none!important;translate:none!important;visibility:visible!important;align-items:flex-start;text-align:left;gap:10px;padding:22px 0;border-top:1px solid var(--hair)}
+  .station:last-child{border-bottom:1px solid var(--hair)}
+  .station::before{content:"FM " attr(data-fm);font:600 12px/1 Archivo,sans-serif;letter-spacing:.2em;color:var(--green);font-variant-numeric:tabular-nums}
+  .station h3{font-size:clamp(30px,10vw,56px);white-space:nowrap}
+  .station p{max-width:none;font-size:16px;text-wrap:pretty}
+}
+
 /* ---------- Reduced motion ---------- */
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}

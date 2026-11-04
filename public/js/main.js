@@ -202,7 +202,11 @@ $$('[data-clock]').forEach((el) => fx.clock(el, CONFIG.tz));
 $$('[data-bars]').forEach((el) => fx.bars(el, { source: (i, n) => drone.level(i, n), audioOnly: true }));
 fx.cursor(root); fx.scramble(root); fx.smooth(); fx.magnets(root); fx.cuts(root); fx.splitReveal(root);
 const ringsC = $('[data-rings]'); if (ringsC) fx.rings(ringsC);
-const htC = $('[data-halftone]'); if (htC) fx.halftone(htC, '/assets/photo-duo-glitch.jpg', { cell: 9, bg: '#3842E7' });
+// Mobile (≤767px): no halftone band, tuner shown as a plain list (see CSS)
+const mobileMQ = matchMedia('(max-width: 767px)');
+const htC = $('[data-halftone]'); let htOn = false;
+const initHalftone = () => { if (htOn || !htC || mobileMQ.matches) return; htOn = true; fx.halftone(htC, '/assets/photo-duo-glitch.jpg', { cell: 9, bg: '#3842E7' }); };
+initHalftone(); mobileMQ.addEventListener('change', initHalftone);
 
 // Ambient sparks on hero / footer logos every 7–14s
 const inView = (el) => { if (!el) return false; const r = el.getBoundingClientRect(); return r.bottom > 0 && r.top < innerHeight && r.width > 0; };
@@ -229,7 +233,7 @@ const tDial = tun && $('[data-dial]', tun), tFreq = tun && $('[data-freq]', tun)
 if (tStatic) fx.grain(tStatic, { alpha: 70, fps: 20 });
 const freqs = [88.1, 92.7, 97.3, 101.9, 106.5];
 eng.onFrame((st) => {
-  if (!tun || !st.visibleOf(tun)) return;
+  if (!tun || mobileMQ.matches || !st.visibleOf(tun)) return;
   const gap = Math.max(200, Math.min(420, st.vw * 0.3)); tun.style.setProperty('--gap', gap + 'px');
   const p = st.progressOf(tun); const raw = fx.clamp(p * 1.15 - 0.05) * 4;
   const near = Math.round(raw), off = Math.min(1, Math.abs(raw - near) * 2);
@@ -317,7 +321,7 @@ eng.onFrame((st) => {
     }
   }
   const mid = st.vh * 0.5;
-  const busy = [tun, igSec, hs].some((el) => { if (!el) return false; const r = el.getBoundingClientRect(); return r.top < mid && r.bottom > mid; });
+  const busy = [mobileMQ.matches ? null : tun, igSec, hs].some((el) => { if (!el) return false; const r = el.getBoundingClientRect(); return r.top < mid && r.bottom > mid; });
   const show = heroDone && !resIn && !footIn && !busy && !state.menu;
   if (show !== ctaOn && cta) {
     ctaOn = show; root.style.setProperty('--cta', show ? '1' : '0');
