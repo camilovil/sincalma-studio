@@ -259,6 +259,11 @@ button{font:inherit;color:inherit}
 .float-cta::before{content:"";width:8px;height:8px;border-radius:50%;background:#000}
 
 /* ---------- Touch: tighter mobile spacing ---------- */
+/* Stacked "Sobre" layout: the reflection's lower half is fully faded, don't let it push the copy down */
+@media (max-width:960px){
+  .about-sym{padding-top:40px}
+  .coin-refl-wrap{margin-bottom:-30%}
+}
 @media (max-width:600px){
   .hero-bar{gap:10px}
   .foot-grid{grid-template-columns:1fr 1fr;gap:28px 20px}
