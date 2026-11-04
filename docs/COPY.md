@@ -9,7 +9,7 @@ SINCALMA STUDIO · PALERMO — BA · CARGANDO SEÑAL · 000–100
 Manifiesto · El espacio · Instagram · SONIDO ON/OFF · BUE hh:mm:ss · Reservar sesión · MENÚ / CERRAR
 
 ## Hero
-ESTUDIO MUSICAL
+ESTUDIO DE GRABACION
 Producción y sonido profesional para artistas y productores
 ● REC 00:00:00:00 · ( PALERMO — BUENOS AIRES ) · DESLIZÁ
 
@@ -18,7 +18,7 @@ UN ESTUDIO DONDE LA CALIDAD TECNICA Y LA EXPLORACION ARTISTICA CONVIVEN
 
 ## Sobre SinCalma
 No imponemos una estética ni una forma de hacer música. Cada proyecto conserva su propia esencia mientras encuentra acá un espacio para desarrollarse, experimentar y crecer.
-SinCalma Studio es un estudio musical profesional y espacio creativo pensado para artistas y productores que buscan desarrollar sus proyectos con criterio, precisión y libertad.
+SinCalma Studio es un estudio de grabación profesional y espacio creativo pensado para artistas y productores que buscan desarrollar sus proyectos con criterio, precisión y libertad.
 
 ## Fundadora
 SERENA ORDANO — “Serena Sin Calma”

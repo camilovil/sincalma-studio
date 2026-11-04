@@ -1,6 +1,6 @@
 # SinCalma Studio — landing
 
-Landing inmersiva de SinCalma Studio (estudio musical, Palermo, Buenos Aires).
+Landing inmersiva de SinCalma Studio (estudio de grabación, Palermo, Buenos Aires).
 Sitio estático sin build: HTML + CSS + módulos JS nativos, con los efectos del handoff de diseño portados a Canvas 2D / WAAPI.
 
 - **Producción:** https://sincalma-studio.pages.dev (Cloudflare Pages)
@@ -10,7 +10,7 @@ Sitio estático sin build: HTML + CSS + módulos JS nativos, con los efectos del
 
 ```
 public/
-  index.html          markup y SEO (OG, JSON-LD MusicStudio, sin dirección exacta)
+  index.html          markup y SEO (OG, JSON-LD LocalBusiness, sin dirección exacta)
   css/styles.css      tokens, tipografía fluida y todas las secciones
   js/main.js          config del cliente, armador de WhatsApp, menú, escenas de scroll
   js/fx.js            motor de efectos (reveals, grano, halftone, cursor, drone, membrana…)
