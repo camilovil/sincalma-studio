@@ -44,3 +44,7 @@ python -m http.server 5178 --directory public
 ```bash
 npx wrangler pages deploy public --project-name sincalma-studio --branch main
 ```
+
+## Imagen para compartir y favicons
+
+Las fuentes están en `tools/brand-images/`: `og.html` (1200×630) e `icon.html` se renderizan con Edge/Chrome headless y `icons.py` compone el símbolo S y exporta `og-image.jpg`, `favicon.ico`, `favicon-32.png`, `apple-touch-icon.png` e `icon-192/512.png` en `public/`. Para regenerarlas, copiá a esa carpeta las fuentes woff2, `scs-white.svg`, `sym-s.png` y las estrellas de `public/`.

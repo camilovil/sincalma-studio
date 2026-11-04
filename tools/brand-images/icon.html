@@ -1,0 +1,16 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+html,body{margin:0;background:transparent;overflow:hidden}
+.i{position:relative;width:512px;height:512px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.app{background:#000}
+.app::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 46%,rgba(56,66,231,.95) 0%,rgba(56,66,231,.42) 34%,rgba(0,0,0,0) 70%)}
+.app::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(255,255,255,.045) 0 2px,rgba(0,0,0,0) 2px 8px)}
+.s{position:relative;z-index:1;aspect-ratio:476/360;-webkit-mask:url(sym-s.png) center/100% 100% no-repeat}
+.app .s{width:72%;background:linear-gradient(155deg,#FFFFFF 0%,#E4EDFF 28%,#8FB2FF 47%,#FFFFFF 60%,#AECBFF 82%,#FFFFFF 100%);filter:drop-shadow(0 0 18px rgba(92,142,255,.55))}
+.fav{background:#3842E7;border-radius:22%}
+.fav .s{width:96%;background:#fff}
+</style></head>
+<body><div class="i" id="i"><div class="s"></div></div>
+<script>document.getElementById('i').classList.add(location.hash.slice(1)||'app')</script>
+</body></html>

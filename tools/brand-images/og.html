@@ -1,0 +1,41 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:Schramberg;src:url(SchrambergSans.woff2);ascent-override:88%;descent-override:20%;line-gap-override:0%}
+@font-face{font-family:Archivo;src:url(Archivo-Regular.woff2);font-weight:400}
+@font-face{font-family:Archivo;src:url(Archivo-SemiBold.woff2);font-weight:600}
+html,body{margin:0;width:1200px;height:630px;overflow:hidden;background:#000}
+.c{position:relative;width:1200px;height:630px;overflow:hidden;color:#fff;font-family:Archivo,sans-serif;-webkit-font-smoothing:antialiased}
+.glow{position:absolute;inset:-10%;background:radial-gradient(circle at 42% 40%,rgba(56,66,231,.72) 0%,rgba(56,66,231,.24) 26%,rgba(0,0,0,0) 56%)}
+.grain{position:absolute;inset:0;opacity:.22;mix-blend-mode:screen}
+.scan{position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(255,255,255,.04) 0 1px,rgba(0,0,0,0) 1px 4px)}
+.row{position:absolute;left:56px;right:56px;display:flex;justify-content:space-between;align-items:flex-end;font:600 15px/1 Archivo;letter-spacing:.2em;color:rgba(255,255,255,.66)}
+.top{top:52px}.bot{bottom:50px}
+.mid{position:absolute;left:0;right:0;top:186px;display:flex;flex-direction:column;align-items:center;gap:34px}
+.mid img{width:760px;display:block}
+.kick{font-family:Schramberg;font-size:24px;letter-spacing:.42em;padding-left:.42em}
+.tag{margin-top:-18px;font-size:22px;color:rgba(255,255,255,.74)}
+.rec{display:flex;align-items:center;gap:12px}
+.rec i{width:10px;height:10px;border-radius:50%;background:#51FF00;box-shadow:0 0 14px #51FF00}
+.bars{display:flex;gap:4px;align-items:flex-end;height:26px}
+.bars b{width:3px;background:#fff}
+.star{position:absolute;aspect-ratio:930/297}
+</style></head>
+<body><div class="c">
+  <div class="glow"></div>
+  <svg class="grain" width="1200" height="630"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter><rect width="100%" height="100%" filter="url(#n)"/></svg>
+  <div class="scan"></div>
+  <img class="star" src="star-green.png" style="left:64px;top:96px;width:170px;rotate:-18deg">
+  <img class="star" src="star-white.png" style="right:150px;top:118px;width:58px;rotate:24deg">
+  <img class="star" src="star-green.png" style="right:70px;bottom:120px;width:132px;rotate:62deg">
+  <div class="row top"><span>SINCALMA STUDIO</span><span>PALERMO — BUENOS AIRES</span></div>
+  <div class="mid">
+    <img src="scs-white.svg" alt="">
+    <span class="kick">ESTUDIO MUSICAL</span>
+    <span class="tag">Producción y sonido profesional para artistas y productores</span>
+  </div>
+  <div class="row bot">
+    <span class="rec"><i></i>RESERVAS POR WHATSAPP</span>
+    <span class="bars"><b style="height:30%"></b><b style="height:62%"></b><b style="height:44%"></b><b style="height:88%"></b><b style="height:56%"></b><b style="height:100%"></b><b style="height:70%"></b><b style="height:38%"></b><b style="height:80%"></b><b style="height:50%"></b><b style="height:26%"></b><b style="height:42%"></b></span>
+  </div>
+</div></body></html>

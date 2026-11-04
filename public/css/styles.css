@@ -259,12 +259,25 @@ button{font:inherit;color:inherit}
 .float-cta::before{content:"";width:8px;height:8px;border-radius:50%;background:#000}
 
 /* ---------- Touch: tighter mobile spacing ---------- */
-/* Stacked "Sobre" layout: the reflection's lower half is fully faded, don't let it push the copy down */
+/* ---------- Tablet / phone ---------- */
 @media (max-width:960px){
+  /* Stacked "Sobre": the reflection's lower half is fully faded, don't let it push the copy down */
   .about-sym{padding-top:40px}
   .coin-refl-wrap{margin-bottom:-30%}
+  /* Manifesto pins only its own content, centred (--mh set from JS), so no empty half-screen when it releases */
+  .manifest .sticky{height:auto;top:calc(50svh - var(--mh,320px) / 2);padding:56px var(--pad-x)}
+  /* Gallery: panels sit just under the header instead of floating in a centred box */
+  .hscroll .sticky{justify-content:flex-start;padding-top:88px}
+  .panel-media{height:clamp(300px,60svh,600px)}
 }
 @media (max-width:600px){
+  :root{--pad-y:72px}
+  .about{padding-top:8px}
+  .space-intro{padding-bottom:24px}
+  .space-intro-in{gap:24px}
+  .booking{padding-top:88px;padding-bottom:72px}
+  .booking-in{gap:40px}
+  .founder-copy{gap:20px}
   .hero-bar{gap:10px}
   .foot-grid{grid-template-columns:1fr 1fr;gap:28px 20px}
   .foot-grid>.foot-col:first-child,.foot-grid>.foot-col:last-child{grid-column:1 / -1}

@@ -218,6 +218,10 @@ document.body.appendChild(probe);
 let svh = probe.offsetHeight, lastW = innerWidth;
 addEventListener('resize', () => { if (!coarse || innerWidth !== lastW) { svh = probe.offsetHeight; lastW = innerWidth; } });
 
+// Manifesto pin height (CSS centres the shorter mobile pin with it)
+const manSticky = $('[data-manifest] .sticky');
+if (manSticky) new ResizeObserver(() => manSticky.parentElement.style.setProperty('--mh', manSticky.offsetHeight + 'px')).observe(manSticky);
+
 // Tuner
 const tun = $('[data-tuner]');
 const tLayers = tun ? $$('[data-station]', tun) : [];
