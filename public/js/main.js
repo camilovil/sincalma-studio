@@ -199,7 +199,7 @@ const eng = fx.createEngine(root, { reduced });
 const grainC = $('[data-grain]'); if (grainC) fx.grain(grainC);
 $$('[data-tc]').forEach((el) => fx.timecode(el));
 $$('[data-clock]').forEach((el) => fx.clock(el, CONFIG.tz));
-$$('[data-bars]').forEach((el) => fx.bars(el, { source: (i, n) => drone.level(i, n) }));
+$$('[data-bars]').forEach((el) => fx.bars(el, { source: (i, n) => drone.level(i, n), audioOnly: true }));
 fx.cursor(root); fx.scramble(root); fx.smooth(); fx.magnets(root); fx.cuts(root); fx.splitReveal(root);
 const ringsC = $('[data-rings]'); if (ringsC) fx.rings(ringsC);
 const htC = $('[data-halftone]'); if (htC) fx.halftone(htC, '/assets/photo-duo-glitch.jpg', { cell: 9, bg: '#3842E7' });

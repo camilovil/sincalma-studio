@@ -128,11 +128,22 @@ export function clock(el, tz = 'America/Argentina/Buenos_Aires') {
   const tick = () => { el.textContent = f.format(new Date()); }; tick(); const i = setInterval(tick, 1000); return () => clearInterval(i);
 }
 
-export function bars(container, { min = 0.08, energy = 1, source = null } = {}) {
-  const kids = [...container.children]; let alive = true; const seeds = kids.map(() => Math.random() * 10);
+// Audio bars. With `audioOnly`, they only move when `source` returns a level (sound on);
+// otherwise they ease down and rest flat.
+export function bars(container, { min = 0.08, energy = 1, source = null, audioOnly = false } = {}) {
+  const kids = [...container.children]; let alive = true; const seeds = kids.map(() => Math.random() * 10); const cur = kids.map(() => min);
   const loop = (now) => {
     if (!alive) return; const t = now / 1000;
-    kids.forEach((k, i) => { const lv = source ? source(i, kids.length) : -1; const v = lv >= 0 ? Math.min(1, lv * 1.4) : Math.abs(Math.sin(t * (2.1 + (i % 5) * 0.37) + seeds[i]) * Math.sin(t * 0.9 + i * 0.6)); k.style.transform = `scaleY(${(min + v * (1 - min) * energy).toFixed(3)})`; });
+    kids.forEach((k, i) => {
+      const lv = source ? source(i, kids.length) : -1;
+      let target;
+      if (lv >= 0) target = min + Math.pow(lv, 1.3) * (1 - min) * energy;
+      else if (audioOnly) target = min;
+      else target = min + Math.abs(Math.sin(t * (2.1 + (i % 5) * 0.37) + seeds[i]) * Math.sin(t * 0.9 + i * 0.6)) * (1 - min) * energy;
+      const next = cur[i] + (target - cur[i]) * (lv >= 0 || !audioOnly ? 0.6 : 0.12);
+      if (Math.abs(next - cur[i]) < 0.0005 && Math.abs(target - cur[i]) < 0.001) return;
+      cur[i] = next; k.style.transform = `scaleY(${next.toFixed(3)})`;
+    });
     requestAnimationFrame(loop);
   };
   requestAnimationFrame(loop); return () => { alive = false; };
@@ -205,7 +216,7 @@ export function drone() {
   let ctx = null, master, an, data, on = false;
   const build = () => {
     ctx = new (window.AudioContext || window.webkitAudioContext)();
-    master = ctx.createGain(); master.gain.value = 0; an = ctx.createAnalyser(); an.fftSize = 256; data = new Uint8Array(an.frequencyBinCount);
+    master = ctx.createGain(); master.gain.value = 0; an = ctx.createAnalyser(); an.fftSize = 2048; an.smoothingTimeConstant = 0.55; an.minDecibels = -90; an.maxDecibels = -36; data = new Uint8Array(an.frequencyBinCount);
     const lp = ctx.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 900; lp.Q.value = 6;
     const lfo = ctx.createOscillator(), lfoG = ctx.createGain(); lfo.frequency.value = 0.08; lfoG.gain.value = 500; lfo.connect(lfoG); lfoG.connect(lp.frequency); lfo.start();
     [55, 82.41, 110.3, 164.8].forEach((f, i) => { const o = ctx.createOscillator(); o.type = i % 2 ? 'sawtooth' : 'triangle'; o.frequency.value = f; o.detune.value = (i - 1.5) * 7; const g = ctx.createGain(); g.gain.value = 0.16 / (i + 1); o.connect(g); g.connect(lp); o.start(); });
@@ -214,7 +225,15 @@ export function drone() {
   };
   return {
     toggle() { if (!ctx) build(); on = !on; if (ctx.state === 'suspended') ctx.resume(); master.gain.cancelScheduledValues(ctx.currentTime); master.gain.linearRampToValueAtTime(on ? 0.35 : 0, ctx.currentTime + (on ? 1.6 : 0.6)); return on; },
-    level(i = 0, n = 12) { if (!an || !on) return -1; an.getByteFrequencyData(data); const k = Math.floor((i / n) * 40) + 2; return data[k] / 255; },
+    // One band per bar, log-spaced over the drone's real range (≈45 Hz – 1.8 kHz).
+    level(i = 0, n = 12) {
+      if (!an || !on) return -1;
+      const now = ctx.currentTime; if (now !== this._t) { this._t = now; an.getByteFrequencyData(data); }
+      const hz = ctx.sampleRate / an.fftSize, f0 = 45 * Math.pow(40, i / n), f1 = 45 * Math.pow(40, (i + 1) / n);
+      let a = Math.floor(f0 / hz), b = Math.max(a + 1, Math.ceil(f1 / hz)), peak = 0;
+      for (let k = a; k < b && k < data.length; k++) peak = Math.max(peak, data[k]);
+      return Math.min(1, (peak / 255) * (0.82 + i * 0.045));
+    },
     get on() { return on; },
   };
 }

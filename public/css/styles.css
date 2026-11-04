@@ -99,7 +99,7 @@ button{font:inherit;color:inherit}
 .rec::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 12px var(--green)}
 .scroll-hint{display:flex;align-items:flex-end;gap:12px}
 .bars{display:flex;gap:3px;align-items:flex-end;height:22px}
-.bars i{width:2px;height:100%;background:#fff;transform-origin:bottom;transform:scaleY(.2)}
+.bars i{width:2px;height:100%;background:#fff;transform-origin:bottom;transform:scaleY(.08)}
 
 /* ---------- Manifesto ---------- */
 .manifest{height:230vh;height:230svh}
