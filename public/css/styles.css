@@ -1,5 +1,5 @@
 /* SinCalma Studio — landing */
-@font-face{font-family:'Schramberg';src:url(../fonts/SchrambergSans.woff2) format('woff2');font-display:swap;ascent-override:88%;descent-override:20%;line-gap-override:0%}
+@font-face{font-family:'Schramberg';src:url(../fonts/SchrambergSans-v2.woff2) format('woff2');font-display:swap;ascent-override:88%;descent-override:20%;line-gap-override:0%}
 @font-face{font-family:'Archivo';src:url(../fonts/Archivo-Regular.woff2) format('woff2');font-weight:400;font-display:swap}
 @font-face{font-family:'Archivo';src:url(../fonts/Archivo-Medium.woff2) format('woff2');font-weight:500;font-display:swap}
 @font-face{font-family:'Archivo';src:url(../fonts/Archivo-SemiBold.woff2) format('woff2');font-weight:600;font-display:swap}
@@ -299,6 +299,8 @@ button{font:inherit;color:inherit}
   /* No halftone band: Sobre flows straight into Fundadora */
   .halftone-band{display:none}
   .about{padding-bottom:24px}
+  /* Founder portrait: square instead of 4:5 so the photo block is shorter */
+  .portrait{aspect-ratio:1/1}
   /* Personality: same scroll-driven radio, as a compact pinned block (--th set from JS) */
   .tuner{height:calc(var(--th,440px) + 150svh)}
   .tuner .sticky{height:auto;top:calc(50svh - var(--th,440px) / 2);display:flex;flex-direction:column;gap:18px;padding:32px 0 24px}

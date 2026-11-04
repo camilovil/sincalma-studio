@@ -5,7 +5,8 @@ export const ease = (t) => 1 - Math.pow(1 - t, 3);
 export const easeIn = (t) => t * t * t;
 const KF = {
   up: [{ opacity: 0, transform: 'translateY(56px)' }, { opacity: 1, transform: 'none' }],
-  mask: [{ clipPath: 'inset(0 0 100% 0)', transform: 'translateY(40%)' }, { clipPath: 'inset(0 0 -10% 0)', transform: 'none' }],
+  // Generous side/top margins: display type (Schramberg) can ink slightly outside its line box.
+  mask: [{ clipPath: 'inset(-30% -12% 130% -12%)', transform: 'translateY(40%)' }, { clipPath: 'inset(-30% -12% -30% -12%)', transform: 'none' }],
   fade: [{ opacity: 0 }, { opacity: 1 }],
   scale: [{ opacity: 0, transform: 'scale(1.12)' }, { opacity: 1, transform: 'none' }],
   wipe: [{ clipPath: 'inset(0 100% 0 0)' }, { clipPath: 'inset(0 0% 0 0)' }],
@@ -33,6 +34,9 @@ export function createEngine(root, { reduced = false } = {}) {
       if (anims.has(el)) return;
       const a = el.animate(KF[el.dataset.in] || KF.up, { duration: reduced ? 1 : +(el.dataset.dur || 1200), delay: reduced ? 0 : +(el.dataset.delay || 0), easing: 'cubic-bezier(.16,.84,.24,1)', fill: 'both' });
       a.pause(); a.currentTime = 0; anims.set(el, a);
+      // Every variant ends on the element's natural style, so drop the effect once done: no clip-path
+      // or filter is left behind to crop the content (e.g. the tops of titles).
+      a.onfinish = () => a.cancel();
       if (throttled) a.finish(); else if (el.dataset.now !== undefined) { a.play(); guard(a); } else if (CLIPS.has(el.dataset.in)) pendingClip.add(el); else io.observe(el);
     });
   };
@@ -288,11 +292,13 @@ export function cuts(root) {
 
 // Per-letter mask reveal for [data-split] (static text only).
 export function splitReveal(root) {
-  const io = new IntersectionObserver((es) => es.forEach((e) => { if (!e.isIntersecting) return; io.unobserve(e.target); e.target.querySelectorAll('[data-ch]').forEach((c, i) => c.animate([{ transform: 'translateY(115%) rotate(6deg)' }, { transform: 'none' }], { duration: 1000, delay: i * 32, easing: 'cubic-bezier(.16,.84,.24,1)', fill: 'both' })); }), { threshold: 0.3 });
+  // After each letter lands, un-mask it (overflow visible) so no glyph stays cropped.
+  const land = (c) => { c.style.transform = 'none'; c.parentElement.style.overflow = 'visible'; };
+  const io = new IntersectionObserver((es) => es.forEach((e) => { if (!e.isIntersecting) return; io.unobserve(e.target); e.target.querySelectorAll('[data-ch]').forEach((c, i) => { const a = c.animate([{ transform: 'translateY(115%) rotate(6deg)' }, { transform: 'none' }], { duration: 1000, delay: i * 32, easing: 'cubic-bezier(.16,.84,.24,1)', fill: 'both' }); a.onfinish = () => { land(c); a.cancel(); }; }); }), { threshold: 0.3 });
   root.querySelectorAll('[data-split]').forEach((el) => {
     if (el._split) return; el._split = true;
     [...el.childNodes].forEach((n) => { if (n.nodeType !== 3) return; const frag = document.createDocumentFragment();
-      [...n.textContent].forEach((ch) => { if (ch === ' ' || ch === '\n') { frag.appendChild(document.createTextNode(' ')); return; } const o = document.createElement('span'); o.style.cssText = 'display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.08em;margin-bottom:-.08em'; const i = document.createElement('span'); i.dataset.ch = ''; i.style.cssText = 'display:inline-block;transform:translateY(115%)'; i.textContent = ch; o.appendChild(i); frag.appendChild(o); });
+      [...n.textContent].forEach((ch) => { if (ch === ' ' || ch === '\n') { frag.appendChild(document.createTextNode(' ')); return; } const o = document.createElement('span'); o.style.cssText = 'display:inline-block;overflow:hidden;vertical-align:top;padding:.14em 0 .1em;margin:-.14em 0 -.1em'; const i = document.createElement('span'); i.dataset.ch = ''; i.style.cssText = 'display:inline-block;transform:translateY(115%)'; i.textContent = ch; o.appendChild(i); frag.appendChild(o); });
       n.replaceWith(frag); });
     io.observe(el);
   });
