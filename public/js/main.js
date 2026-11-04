@@ -265,6 +265,7 @@ eng.onFrame((st) => {
 
 // Hero zoom, manifesto, gallery, Instagram tunnel, footer, floating CTA
 const hero = $('[data-hero]'), man = $('[data-manifest]');
+const heroLogo = hero && $('.hero-logo', hero);
 const words = man ? $$('.manifest-text span', man) : [];
 const hs = $('[data-hscroll]'), track = hs && $('[data-track]', hs);
 const igSec = $('[data-ig]'), igPosts = igSec ? $$('[data-ig-post]', igSec) : [];
@@ -286,7 +287,9 @@ eng.onFrame((st) => {
   if (hero && st.visibleOf(hero)) {
     const p = st.progressOf(hero);
     hero.style.setProperty('--z', (reduced ? 1 : 1 + fx.easeIn(p) * 58).toFixed(3));
-    hero.style.setProperty('--lo', (1 - fx.clamp((p - 0.68) / 0.2)).toFixed(3));
+    const lo = 1 - fx.clamp((p - 0.68) / 0.2);
+    hero.style.setProperty('--lo', lo.toFixed(3));
+    heroLogo?.classList.toggle('gone', lo <= 0.001); // fully faded: stop painting the 59× logo
     hero.style.setProperty('--fade', (1 - fx.clamp(p * 3.2)).toFixed(3));
     hero.style.setProperty('--lab', fx.clamp((p - 0.82) / 0.12).toFixed(3));
   }
