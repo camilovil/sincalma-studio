@@ -108,14 +108,14 @@ $$('a[href^="#"]').forEach((a) => a.addEventListener('click', () => {
 }));
 
 // ───────────── Decorative DOM built in JS ─────────────
-// 3D S coin: 15 extrusion layers from deep blue to Dodger Blue
+// 3D S coin: 15 extrusion layers, brand palette only — Royal Blue body, Dodger Blue near the face
 const coinRot = $('[data-coin-rot]');
 if (coinRot) {
   const face = $('.coin-face', coinRot); const N = 15;
   for (let i = 0; i < N; i++) {
-    const k = i / (N - 1); const l = document.createElement('span');
+    const l = document.createElement('span');
     l.style.transform = `translateZ(${(-22.5 + i * 1.5).toFixed(1)}px)`;
-    l.style.background = `rgb(${Math.round(20 + k * 67)},${Math.round(26 + k * 110)},${Math.round(150 + k * 98)})`;
+    l.style.background = i < N - 4 ? '#3842E7' : '#5C8EFF';
     coinRot.insertBefore(l, face);
   }
 }

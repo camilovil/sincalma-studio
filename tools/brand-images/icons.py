@@ -6,8 +6,8 @@ sym = Image.open(os.path.join(og_dir, 'sym-s.png')).convert('RGBA')
 alpha_full = sym.getchannel('A').crop(sym.getchannel('A').getbbox())
 
 def chrome(w, h):
-    """155deg gradient #FFF → #E4EDFF → #8FB2FF → #FFF → #AECBFF → #FFF (like the 3D coin face)."""
-    stops = [(0, (255, 255, 255)), (.28, (228, 237, 255)), (.47, (143, 178, 255)), (.60, (255, 255, 255)), (.82, (174, 203, 255)), (1, (255, 255, 255))]
+    """155deg gradient #FFF → #AECBFF → #5C8EFF → #FFF → #AECBFF → #FFF (brand palette only, like the 3D coin face)."""
+    stops = [(0, (255, 255, 255)), (.28, (174, 203, 255)), (.47, (92, 142, 255)), (.60, (255, 255, 255)), (.82, (174, 203, 255)), (1, (255, 255, 255))]
     g = Image.new('RGB', (w, h)); px = g.load()
     a = math.radians(155); dx, dy = math.sin(a), -math.cos(a)
     L = abs(w * dx) + abs(h * dy)
