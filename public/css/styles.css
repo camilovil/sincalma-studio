@@ -136,7 +136,14 @@ button{font:inherit;color:inherit}
 .more:hover{color:var(--green)}
 .more:hover .more-icon{transform:scale(1.12)}
 .about-more{display:grid;grid-template-rows:1fr;transition:grid-template-rows .6s var(--ease-reveal),opacity .45s var(--ease-ui),margin-top .6s var(--ease-reveal)}
-.about-more>div{min-height:0;overflow:hidden}
+.about-more>div{min-height:0;overflow:hidden;display:flex;flex-direction:column;align-items:center;gap:24px}
+/* Sobre shows only the S symbol; the button sits under it and the copy opens below, centred */
+.about-grid{flex-direction:column;flex-wrap:nowrap;gap:12px}
+.about-sym{flex:none;width:100%}
+.coin-refl-wrap{margin-bottom:calc(min(460px,86%) * -0.36)}
+.about-copy{flex:none;width:100%;max-width:820px;align-items:center;text-align:center}
+.about-copy .more{align-self:center}
+.about-copy .body{margin:0 auto}
 .js .about-more:not(.open){grid-template-rows:0fr;opacity:0;margin-top:-28px}
 @media (prefers-reduced-motion:reduce){.about-more{transition:none}}
 
@@ -277,7 +284,6 @@ button{font:inherit;color:inherit}
 @media (max-width:960px){
   /* Stacked "Sobre": the reflection's lower half is fully faded, don't let it push the copy down */
   .about-sym{padding-top:40px}
-  .coin-refl-wrap{margin-bottom:-30%}
   /* Manifesto pins only its own content, centred (--mh set from JS), so no empty half-screen when it releases */
   .manifest .sticky{height:auto;top:calc(50svh - var(--mh,320px) / 2);padding:56px var(--pad-x)}
   /* Gallery: panels sit just under the header instead of floating in a centred box */
