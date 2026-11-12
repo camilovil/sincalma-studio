@@ -38,7 +38,7 @@ const CLIPPED = new Set(['mask', 'wipe']);
  * Frame loop shared by every scroll scene.
  * - Plays [data-in] reveals once they enter the viewport.
  * - Writes --p (0…1 scroll progress) on visible [data-pin] sections.
- * - Writes --mx/--my (smoothed pointer) and --scrolled on the root element.
+ * - Writes --mx/--my (smoothed pointer) on the .glow layers and --scrolled on the header.
  * - Moves [data-par] elements with a light parallax.
  * Scene code subscribes with onFrame(fn); fn receives the frame state.
  */
@@ -144,7 +144,16 @@ export function createEngine(root, { reduced = false } = {}) {
 
   const pins = [...root.querySelectorAll('[data-pin]')];
   const parallax = [...root.querySelectorAll('[data-par]')];
-  const docStyle = document.documentElement.style;
+  const glows = [...root.querySelectorAll('.glow')];
+  const header = root.querySelector('.site-header');
+
+  // Custom properties are written on the few elements that read them (never on <html>, which
+  // would restyle the whole page every frame) and only when the value actually changes.
+  const setVar = (el, name, value) => {
+    if (el._vars?.[name] === value) return;
+    (el._vars ||= {})[name] = value;
+    el.style.setProperty(name, value);
+  };
 
   const frame = (now) => {
     frameSeen = true;
@@ -163,12 +172,17 @@ export function createEngine(root, { reduced = false } = {}) {
     pointer.sx += (pointer.nx - pointer.sx) * 0.08;
     pointer.sy += (pointer.ny - pointer.sy) * 0.08;
 
-    docStyle.setProperty('--mx', (pointer.sx * 100).toFixed(2) + '%');
-    docStyle.setProperty('--my', (pointer.sy * 100).toFixed(2) + '%');
-    docStyle.setProperty('--scrolled', clamp(y / 160).toFixed(3));
+    const mx = (pointer.sx * 100).toFixed(1) + '%';
+    const my = (pointer.sy * 100).toFixed(1) + '%';
+    glows.forEach((el) => {
+      if (!visibleOf(el)) return;
+      setVar(el, '--mx', mx);
+      setVar(el, '--my', my);
+    });
+    if (header) setVar(header, '--scrolled', clamp(y / 160).toFixed(2));
 
     pins.forEach((el) => {
-      if (visibleOf(el)) el.style.setProperty('--p', progressOf(el).toFixed(4));
+      if (visibleOf(el)) setVar(el, '--p', progressOf(el).toFixed(4));
     });
     parallax.forEach((el) => {
       const r = el.getBoundingClientRect();
@@ -513,61 +527,6 @@ export function scramble(root) {
     { threshold: 0.4 },
   );
   root.querySelectorAll('[data-scramble]').forEach((el) => io.observe(el));
-}
-
-/** Inertia scroll for mouse wheels (desktop only); in-page anchors glide too. */
-export function smoothScroll() {
-  if (matchMedia('(pointer: coarse)').matches) return;
-  document.documentElement.style.scrollBehavior = 'auto';
-  let target = scrollY;
-  let current = scrollY;
-  let active = false;
-  const maxScroll = () => document.documentElement.scrollHeight - innerHeight;
-
-  addEventListener(
-    'wheel',
-    (e) => {
-      const horizontal = Math.abs(e.deltaX) > Math.abs(e.deltaY);
-      if (document.body.classList.contains('locked') || e.ctrlKey || e.defaultPrevented || horizontal) return;
-      e.preventDefault();
-      if (!active) target = current = scrollY;
-      active = true;
-      target = clamp(target + e.deltaY * (e.deltaMode === 1 ? 40 : 1), 0, maxScroll());
-    },
-    { passive: false },
-  );
-
-  addEventListener('click', (e) => {
-    const link = e.target.closest?.('a[href^="#"]');
-    if (!link) return;
-    const id = link.getAttribute('href').slice(1);
-    const el = id === 'top' ? null : document.getElementById(id);
-    if (id !== 'top' && !el) return;
-    e.preventDefault();
-    current = scrollY;
-    target = el ? Math.min(maxScroll(), el.getBoundingClientRect().top + scrollY) : 0;
-    active = true;
-  });
-
-  // Keyboard or a drag on the scrollbar takes over.
-  const release = () => {
-    active = false;
-  };
-  addEventListener('keydown', release);
-  addEventListener('pointerdown', release);
-
-  const loop = () => {
-    if (active) {
-      current += (target - current) * 0.085;
-      if (Math.abs(target - current) < 0.6) {
-        current = target;
-        active = false;
-      }
-      scrollTo(0, current);
-    }
-    requestAnimationFrame(loop);
-  };
-  requestAnimationFrame(loop);
 }
 
 /** Buttons marked [data-magnet] lean towards a nearby pointer (fine pointers only). */

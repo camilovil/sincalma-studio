@@ -1,5 +1,5 @@
 // SinCalma Studio — landing page behaviour.
-import * as fx from './fx.js?v=2026-11-11b'; // bump with the ?v= in index.html on each release
+import * as fx from './fx.js?v=2026-11-12'; // bump with the ?v= in index.html on each release
 
 // ───────────── Client data ─────────────
 const CONFIG = {
@@ -321,7 +321,6 @@ $$('[data-bars]').forEach((el) => fx.bars(el, { source: (i, n) => drone.level(i,
 $$('[data-rings]').forEach((canvas) => fx.rings(canvas));
 fx.scramble(document.body);
 fx.splitReveal(document.body);
-fx.smoothScroll();
 fx.magnets(document.body);
 
 // Halftone band: desktop and tablet only (hidden on phones, see CSS).

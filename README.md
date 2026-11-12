@@ -14,7 +14,7 @@ public/
   css/styles.css      tokens, tipografía fluida y todas las secciones
   js/main.js          datos del cliente, armador de WhatsApp, menú y escenas de scroll
   js/fx.js            motor de efectos: reveals, progreso de secciones fijas, grano,
-                      semitono, membrana, drone sintetizado, scramble y scroll suave
+                      semitono, membrana, drone sintetizado y scramble (el scroll es el nativo)
   assets/  fonts/     imágenes del moodboard y fuentes woff2 autoalojadas
   _headers            caché y cabeceras de seguridad para Cloudflare Pages
 docs/
