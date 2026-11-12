@@ -1,5 +1,5 @@
 // SinCalma Studio — landing page behaviour.
-import * as fx from './fx.js?v=2026-11-11'; // bump with the ?v= in index.html on each release
+import * as fx from './fx.js?v=2026-11-11b'; // bump with the ?v= in index.html on each release
 
 // ───────────── Client data ─────────────
 const CONFIG = {

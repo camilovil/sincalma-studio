@@ -283,7 +283,18 @@ button {
   border-bottom: 1px solid rgba(255, 255, 255, calc(var(--scrolled, 0) * 0.08));
   transition: opacity 0.8s;
 }
+/* Desktop: three columns so the menu sits at the true centre whatever the side widths */
+@media (min-width: 1180px) {
+  .site-header {
+    display: grid;
+    grid-template-columns: minmax(max-content, 1fr) auto minmax(max-content, 1fr);
+  }
+  .header-right {
+    justify-self: end;
+  }
+}
 .brand {
+  justify-self: start;
   display: flex;
   align-items: center;
   gap: 12px;
