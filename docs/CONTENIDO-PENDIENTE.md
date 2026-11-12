@@ -11,7 +11,7 @@ Checklist para el cliente antes de pasar a producción.
 
 ## Imágenes (alta resolución, mín. 2400px lado largo)
 - [ ] 5 fotos del espacio (una por sala) — se les aplica el tratamiento del manual (viraje azul / semitono)
-- [ ] Retrato de Serena Ordano (vertical 4:5)
+- [x] Retrato de Serena Ordano — cargado (llegó con marca de CapCut, recortada, y la cara pixelada; si hay versión sin pixelar, reemplazar `public/assets/serena-ordano-*.jpg`)
 - [ ] 12–14 posts para el túnel de Instagram (o acceso a la API de Instagram)
 - [ ] Imagen para compartir en redes (OpenGraph 1200×630)
 

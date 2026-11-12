@@ -21,10 +21,10 @@ No imponemos una estética ni una forma de hacer música. Cada proyecto conserva
 SinCalma Studio es un estudio de grabación profesional y espacio creativo pensado para artistas y productores que buscan desarrollar sus proyectos con criterio, precisión y libertad.
 
 ## Fundadora
-SERENA ORDANO — “Serena Sin Calma”
-Artista y profesional de la música. Su recorrido le permite comprender el proceso creativo desde adentro: sus búsquedas, sus decisiones, sus dudas y la necesidad de construir una identidad auténtica.
+SERENA ORDANO · @serenasincalma
+Artista independiente y fundadora de SinCalma Studio. Su recorrido en la música y la producción artística dio origen a este proyecto.
 
-## Personalidad — SINTONIZÁ LA MARCA
+## Personalidad — SINTONIZÁ LA MARCA (fuera del sitio por ahora, a pedido del cliente)
 88.1 PROFESIONAL — Trabaja con criterio, calidad y compromiso. La creatividad no está reñida con la precisión.
 92.7 DINAMICA — En constante movimiento, abierta a experimentar, evolucionar y explorar nuevas posibilidades.
 97.3 SEGURA — Comunica confianza y solidez sin caer en una actitud distante o rígida.
@@ -33,14 +33,14 @@ Artista y profesional de la música. Su recorrido le permite comprender el proce
 
 ## 02 El espacio
 PALERMO · Buenos Aires
-Cada sesión está diseñada para capturar la máxima fidelidad acústica, combinando equipos de alta gama con tecnología avanzada para potenciar la identidad sonora de cada artista.
+Un estudio profesional acondicionado para el desarrollo de proyectos musicales, complementado por espacios de distensión diseñados para favorecer la concentración y el equilibrio creativo.
 Salas: SALA DE CONTROL · CABINA DE VOZ · LIVE ROOM · EQUIPAMIENTO · LOUNGE
 ( UBICACIÓN ) Palermo, Buenos Aires. La dirección exacta se comparte al confirmar tu sesión. — Coordinar una visita
 
-## 03 Instagram
+## Instagram (sin rótulo)
 SEGUINOS · @sincalmastudio · PASÁ EL CURSOR PARA SOLARIZAR (mobile: LOS POSTS SE SOLARIZAN AL PASAR)
 
-## 04 Reservas
+## 03 Reservas
 RESERVAS — Armá tu consulta en dos pasos y la enviamos directo por WhatsApp.
 01 — ¿QUÉ NECESITÁS?: Grabación · Producción · Mezcla y master · Otra consulta
 02 — ¿CUÁNDO?: Esta semana · Este mes · Sin fecha aún
