@@ -840,11 +840,16 @@ button {
   font-size: clamp(44px, 6.4vw, 104px);
   line-height: 0.92;
 }
-.founder-alias {
+.founder-alias,
+.founder-alias:visited {
   font-weight: 600;
   font-size: clamp(20px, 1.8vw, 28px);
   color: var(--anakiwa);
+  text-decoration: none;
   transition: color 0.25s;
+}
+.founder-alias:hover {
+  color: var(--green);
 }
 .founder-bio {
   max-width: 520px;

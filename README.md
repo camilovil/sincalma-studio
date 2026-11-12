@@ -49,6 +49,9 @@ python -m http.server 5178 --directory public
 
 ## Deploy
 
+Antes de publicar cambios de CSS o JS, actualizá la versión `?v=` en `index.html` (estilos y `main.js`) y en el `import` de `fx.js` al principio de `main.js`, así ningún navegador mezcla archivos viejos con nuevos.
+
+
 ```bash
 npx wrangler pages deploy public --project-name sincalma-studio --branch main
 ```

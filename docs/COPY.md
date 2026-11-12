@@ -6,7 +6,7 @@ Notas: títulos en Schramberg van SIN tildes ni signos (la fuente no los tiene).
 SINCALMA STUDIO · PALERMO — BA · CARGANDO SEÑAL · 000–100
 
 ## Header
-Manifiesto · El espacio · Instagram · SONIDO ON/OFF · BUE hh:mm:ss · Reservar sesión · MENÚ / CERRAR
+Manifiesto · El espacio · SONIDO ON/OFF · BUE hh:mm:ss · Reservar sesión · MENÚ / CERRAR
 
 ## Hero
 SINCALMA STUDIO
@@ -52,7 +52,7 @@ Enviar por WhatsApp — Se abre WhatsApp con el mensaje listo para enviar.
 ## Footer
 ( FIN DE LA SESIÓN ) · SINCALMA STUDIO — PALERMO
 RESERVAS: Reservar sesión · Abierto ahora / Te respondemos mañana
-NAVEGACIÓN: Manifiesto · El espacio · Instagram · Reservas
+NAVEGACIÓN: Manifiesto · El espacio · Reservas
 CONTACTO: WhatsApp · @sincalmastudio · Palermo, Buenos Aires
 ESTUDIO: Producción y sonido profesional para artistas y productores. · Volver arriba
 © 2026 SinCalma Studio. Todos los derechos reservados. · Sitio desarrollado por camilovillanueva.com
