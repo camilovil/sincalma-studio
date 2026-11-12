@@ -1,5 +1,5 @@
 // SinCalma Studio — landing page behaviour.
-import * as fx from './fx.js?v=2026-11-12'; // bump with the ?v= in index.html on each release
+import * as fx from './fx.js?v=2026-11-12c'; // bump with the ?v= in index.html on each release
 
 // ───────────── Client data ─────────────
 const CONFIG = {
@@ -409,9 +409,11 @@ eng.onFrame((st) => {
 });
 
 // Gallery: vertical scroll drives the horizontal track; section height follows the track width.
+// The track moves a bit faster than the scroll (0.8 px of scroll per px of track) to keep the pin short.
+const GALLERY_SCROLL_RATIO = 0.8;
 eng.onFrame((st) => {
   const distance = Math.max(0, track.scrollWidth - st.vw);
-  const height = Math.round(distance + svh);
+  const height = Math.round(distance * GALLERY_SCROLL_RATIO + svh);
   if (Math.abs((gallery._h || 0) - height) > 2) {
     gallery._h = height;
     gallery.style.height = height + 'px';

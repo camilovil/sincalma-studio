@@ -464,8 +464,8 @@ button {
 
 /* ---------- Hero ---------- */
 .hero {
-  height: 260vh;
-  height: 260svh;
+  height: 190vh;
+  height: 190svh;
 }
 .hero .sticky {
   display: flex;
@@ -579,8 +579,8 @@ button {
 
 /* ---------- Manifiesto ---------- */
 .manifest {
-  height: 230vh;
-  height: 230svh;
+  height: 170vh;
+  height: 170svh;
 }
 .manifest .sticky {
   display: flex;
@@ -1024,8 +1024,8 @@ button {
 
 /* ---------- Instagram ---------- */
 .ig {
-  height: 380vh;
-  height: 380svh;
+  height: 270vh;
+  height: 270svh;
   background: #000;
 }
 .ig .sticky {
@@ -1272,8 +1272,8 @@ button {
 
 /* ---------- Footer ---------- */
 .footer {
-  height: 230vh;
-  height: 230svh;
+  height: 170vh;
+  height: 170svh;
   background: #000;
 }
 .footer .sticky {
